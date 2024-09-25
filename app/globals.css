@@ -1,0 +1,258 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+.bg-main-1 {
+  background-color: #a1b2e1;
+}
+
+.bg-main-2 {
+  background-color: #676f4f;
+}
+
+.bg-main-3 {
+  background-color: #715c6c;
+}
+
+.font-color-1 {
+  color: #fefffd;
+}
+
+.font-color-2 {
+  color: #35352d;
+}
+
+.font-color-3 {
+  color: #1a1914;
+}
+
+.font-color-button-normal-1 {
+  color: #3e4554;
+}
+
+.font-color-button-normal-2 {
+  color: #39392f;
+}
+
+.font-color-button-normal-3 {
+  color: #feeb51;
+}
+
+.font-color-button-reset-1,
+.font-color-button-reset-2,
+.font-color-button-reset-3,
+.font-color-button-equal-1,
+.font-color-button-equal-2 {
+  color: #faffff;
+}
+
+.font-color-button-equal-3 {
+  color: #10262c;
+}
+
+.bg-content-var-a-1 {
+  background-color: #262c43;
+}
+
+.bg-content-var-a-2 {
+  background-color: #d3cecd;
+}
+
+.bg-content-var-a-3 {
+  background-color: #59476c;
+}
+
+.bg-content-var-button-normal-1 {
+  background-color: #eae3db;
+  box-shadow: 0 4px 0 0 rgba(181,164,155,255);
+}
+
+.bg-content-var-button-normal-1:hover {
+  background-color: #ffffff;
+}
+
+.bg-content-var-button-normal-2 {
+  background-color: #e5e4e0;
+  box-shadow: 0 4px 0 0 rgba(167,157,148,255);
+}
+
+.bg-content-var-button-normal-2:hover {
+  background-color: #ffffff;
+}
+
+.bg-content-var-button-normal-3 {
+  background-color: #331b4d;
+  box-shadow: 0 4px 0 0 rgba(128,34,151,255);
+}
+
+.bg-content-var-button-normal-3:hover {
+  background-color: #6b34ac;
+}
+
+.bg-content-var-button-reset-1 {
+  background-color: #647299;
+  box-shadow: 0 4px 0 0 rgba(66,78,111,255);
+}
+
+.bg-content-var-button-reset-1:hover {
+  background-color: #a2b3e1;
+}
+
+.bg-content-var-button-reset-2 {
+  background-color: #388187;
+  box-shadow: 0 4px 0 0 rgba(25,98,105,255);
+}
+
+.bg-content-var-button-reset-2:hover {
+  background-color: #62b5bd;
+}
+
+.bg-content-var-button-reset-3 {
+  background-color: #56077c;
+  box-shadow: 0 4px 0 0 rgba(116,19,158,255);
+}
+
+.bg-content-var-button-reset-3:hover {
+  background-color: #8631b0;
+}
+
+.bg-content-var-b-1,
+.bg-content-var-button-equal-1 {
+  background-color: #d13f30;
+}
+
+.bg-content-var-b-2,
+.bg-content-var-button-equal-2 {
+  background-color: #c85401;
+}
+
+.bg-content-var-b-3,
+.bg-content-var-button-equal-3 {
+  background-color: #00decf;
+}
+
+.bg-content-var-button-equal-1 {
+  box-shadow: 0 4px 0 0 rgba(119,42,40,255)
+}
+
+.bg-content-var-b-1:hover,
+.bg-content-var-button-equal-1:hover {
+  background-color: #fa6b5f;
+}
+
+.bg-content-var-button-equal-2 {
+  box-shadow: 0 4px 0 0 rgba(130,71,28,255);
+}
+
+.bg-content-var-b-2:hover,
+.bg-content-var-button-equal-2:hover {
+  background-color: #ff8a3a;
+}
+
+.bg-content-var-button-equal-3 {
+  box-shadow: 0 4px 0 0 rgba(130,226,232,255);
+}
+
+.bg-content-var-b-3:hover,
+.bg-content-var-button-equal-3:hover {
+  background-color: #94fff9;
+}
+
+.toggle-position-1 {
+  left: 6px;
+}
+
+.toggle-position-2 {
+  left: 32px;
+}
+
+.toggle-position-3 {
+  left: 58px;
+}
+
+.double_grid_column {
+  grid-column: span 2;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.btn.lg {
+  padding: 0.100rem 10.00rem; /* Larger */
+}
