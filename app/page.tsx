@@ -136,6 +136,10 @@ function CalculatorPage() {
 
       <footer className={"block bg-white w-full"}>
         <p className={"text-xs"}>
+<<<<<<< HEAD
+=======
+          
+>>>>>>> 0cf8696f3bcc104a90a34d2163a0a8c68075b4f3
           Coded by <a className={"text-blue-700"} href="https://indivillage.com">Indivillage Tech Solutions</a>.
         </p>
       </footer>
