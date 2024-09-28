@@ -72,16 +72,16 @@ function CalculatorPage() {
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('8')}>8</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('9')}>9</Button>
           <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('%')}>%</Button> 
-          <Button variant='outline' size="lg" onClick={() => handleClickButton('e')}>e</Button>
-          <Button variant='outline' size="lg" onClick={() => handleClickButton('x²')}>x²</Button>
-          <Button variant='outline' size="lg" onClick={() => handleClickButton('^3')}>x<sup>3</sup></Button>
+          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('e')}>e</Button>
+          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('x²')}>x²</Button>
+          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('^3')}>x<sup>3</sup></Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('4')}>4</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('5')}>5</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('6')}>6</Button>
           <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('*')}>*</Button>
           <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('/')}>/</Button>
-          <Button variant='outline' size="lg" onClick={() => handleClickButton('π')}>π</Button>
-          <Button variant='outline' size="lg" onClick={() => handleClickButton('√')}>√</Button>
+          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('π')}>π</Button>
+          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('√')}>√</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('1')}>1</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('2')}>2</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('3')}>3</Button>
