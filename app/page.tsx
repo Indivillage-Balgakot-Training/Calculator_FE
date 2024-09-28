@@ -27,7 +27,7 @@ function CalculatorPage() {
   };
 
   const handleClickButton = async (value: string) => {
-    if (!isNaN(Number(value)) || value === '.' || ['+', '-', '*', '/', 'Cos', 'Sin', 'Tan', 'log', 'ln', 'π', '√', '^', 'e', 'x²'].includes(value)) {
+    if (!isNaN(Number(value)) || value === '.' || ['+', '-', '*', '/', 'Cos', 'Sin', 'Tan', 'log', 'ln', 'π', '√', '^', 'e', '²','^3'].includes(value)) {
       // Append to expression
       setExpression(prev => prev + value);
     } else if (value === '=') {
@@ -73,8 +73,8 @@ function CalculatorPage() {
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('9')}>9</Button>
           <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('%')}>%</Button> 
           <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('e')}>e</Button>
-          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('x²')}>x²</Button>
-          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('^3')}>x<sup>3</sup></Button>
+          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('²')}>x²</Button>
+          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('^3')}>x^3</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('4')}>4</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('5')}>5</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('6')}>6</Button>
