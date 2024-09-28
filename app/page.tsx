@@ -56,7 +56,7 @@ function CalculatorPage() {
 
         {/* Calculator Screen */}
         <div className={cn("h-32 w-full mt-6 p-8 border rounded-lg bg-white")}>
-          <p className={cn("font-bold text-6xl text-right ")}>{displayValue}</p>
+          <p className={cn("font-bold text-6xl text-right text-black")}>{displayValue}</p>
         </div>
         
         {/* Calculator Buttons */}
