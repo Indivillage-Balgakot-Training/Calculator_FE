@@ -10,6 +10,9 @@ import { Button } from "@/components/ui/button";
 
 function CalculatorPage() {
   const [expression, setExpression] = useState<string>('');
+  const [history, setHistory] = useState<{ expression: string, result: string }[]>([]);
+  const [showHistory, setShowHistory] = useState<boolean>(false);
+
 
   const operateCalculator = async (expr: string): Promise<string> => {
     const response = await fetch('http://127.0.0.1:5000/api/calculate', {
@@ -23,11 +26,12 @@ function CalculatorPage() {
     }
 
     const data = await response.json();
+    setHistory(prev => [...prev, { expression: expr, result: data.result }]);
     return data.result.toString();
   };
 
   const handleClickButton = async (value: string) => {
-    if (!isNaN(Number(value)) || value === '.' || ['+', '-', '*', '/', 'Cos', 'Sin', 'Tan', 'log', 'ln', 'π', '√', '^', 'e', '²','^3'].includes(value)) {
+    if (!isNaN(Number(value)) || value === '.' || ['+', '-', '*', '/', 'Cos', 'Sin', 'Tan', 'log', 'ln', 'π', '√', '^', 'e', '²','^3','%','(',')'].includes(value)) {
       // Append to expression
       setExpression(prev => prev + value);
     } else if (value === '=') {
@@ -43,6 +47,7 @@ function CalculatorPage() {
     }
   };
 
+  const toggleHistory = () => setShowHistory(!showHistory);
   // Display logic: Show the current expression
   const displayValue = expression || '0';
 
@@ -58,7 +63,16 @@ function CalculatorPage() {
         <div className={cn("h-32 w-full mt-6 p-8 border rounded-lg bg-white overflow-hidden")}>
           <p className={cn("font-bold text-6xl text-right text-black")}>{displayValue}</p>
         </div>
-        
+        {showHistory && (
+        <div className={cn("mt-4 p-4 border rounded-lg bg-gray-100")}>
+          <h2 className="text-lg font-bold">History</h2>
+          <ul>
+            {history.map((item, index) => (
+              <li key={index} className="text-sm">{item.expression} = {item.result}</li>
+            ))}
+          </ul>
+        </div>
+      )}
         {/* Calculator Buttons */}
         <div className={cn("w-full grid grid-cols-7 gap-6 mt-6 p-8 rounded-lg")}>
           <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Cos')}>Cos</Button>
@@ -90,12 +104,14 @@ function CalculatorPage() {
           <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('.')}>.</Button>
           <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('^')}>^</Button>
           <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('0')}>0</Button>
-          <Button variant='outline' size="lg" className="col-span-2 bg-blue-400 hover:bg-blue-600 text-white" onClick={() => handleClickButton('DEL')}>DEL</Button>
+          <Button variant='outline' size="lg" className="bg-indigo-500 hover:bg-indigo-900 top-1 left-1 text-white" onClick={toggleHistory}>
+          📜  </Button>
+          <Button variant='outline' size="lg" className="bg-blue-400 hover:bg-blue-600 text-white" onClick={() => handleClickButton('DEL')}>DEL</Button>
           <Button variant='outline' size="lg" className="col-span-2 bg-blue-400 hover:bg-blue-600 text-white" onClick={() => handleClickButton('RESET')}>RESET</Button>
           <Button variant='outline' size="lg" className="col-span-2 bg-purple-400 hover:bg-purple-600 text-white" onClick={() => handleClickButton('=')}>=</Button>
         </div>
       </div>
-    </main>
+</main>
   );
 }
 

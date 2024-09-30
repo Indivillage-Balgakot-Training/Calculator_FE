@@ -1,4 +1,4 @@
-// File: C:\Users\Acer 7\Desktop\New folder (2)\Calculator_FE\app\layout.tsx
+// File: C:\Users\Acer 3\Desktop\Calcy\Calculator_FE\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
