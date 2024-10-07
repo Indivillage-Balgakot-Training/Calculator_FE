@@ -77,7 +77,7 @@ function CalculatorPage() {
         </div>
       )}
         {/* Calculator Buttons */}
-        <div className={cn("w-full grid grid-cols-7 gap-6 mt-6 p-8 rounded-lg")}>
+        <div className={cn("w-full grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-4 mt-6 p-4 rounded-lg")}>
           <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Cos')}>Cos</Button>
           <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Sin')}>Sin</Button>
           <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Tan')}>Tan</Button>
