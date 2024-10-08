@@ -256,3 +256,22 @@
 .btn.lg {
   padding: 0.100rem 10.00rem; /* Larger */
 }
+@keyframes roll {
+  0% {
+    transform: rotateX(0);
+    color: white; /* Starting color */
+  }
+  50% {
+    transform: rotateX(360deg);
+    color: rgb(192, 61, 197); /* Color at halfway point */
+  }
+  100% {
+    transform: rotateX(0);
+    color: blue; /* Final color */
+  }
+}
+
+.roll {
+  display: inline-block;
+  animation: roll 2s infinite; /* Adjust duration as needed */
+}

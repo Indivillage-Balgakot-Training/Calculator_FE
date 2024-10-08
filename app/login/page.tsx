@@ -33,7 +33,7 @@ const AuthPage = () => {
         } else {
           setIsAuthenticated(true);
           localStorage.setItem('isAuthenticated', 'true');
-          router.push('/'); // Redirect to home page
+          router.push('/calculator'); // Redirect to home page
         }
       } else {
         setError(data.error || 'An error occurred');
