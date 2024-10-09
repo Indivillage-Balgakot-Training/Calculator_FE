@@ -19,28 +19,28 @@ function CalculatorPage() {
     const authStatus = localStorage.getItem('isAuthenticated');
     setIsAuthenticated(authStatus === 'true');
 
-    
     if (authStatus !== 'true') {
       router.push('/login');
     } else {
       // Load history from localStorage if authenticated
-      const savedHistory = localStorage.getItem('calculatorHistory');
-      if (savedHistory) {
-        setHistory(JSON.parse(savedHistory));
-      }
+      const username = localStorage.getItem('username');
+      const fetchUserHistory = async () => {
+        const response = await fetch(`http://127.0.0.1:5000/api/logs/${username}`);
+        if (response.ok) {
+          const data = await response.json();
+          setHistory(data);
+        }
+      };
+      fetchUserHistory();
     }
   }, [router]);
 
-  useEffect(() => {
-    // Save history to localStorage whenever it updates
-    localStorage.setItem('calculatorHistory', JSON.stringify(history));
-  }, [history]);
-
   const operateCalculator = async (expr: string): Promise<string> => {
+    const username = localStorage.getItem('username'); // Retrieve username from localStorage
     const response = await fetch('http://127.0.0.1:5000/api/calculate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ expression: expr }),
+      body: JSON.stringify({ expression: expr, username: username }), // Include username
     });
 
     if (!response.ok) return 'Error';
@@ -67,10 +67,10 @@ function CalculatorPage() {
   const displayValue = expression || '0';
 
   return (
-    <main className={cn("min-h-screen  flex flex-col items-center")}>
+    <main className={cn("min-h-screen flex flex-col items-center")}>
       <div className="block max-w-xl mx-auto mt-10 py-5 px-2 border border-gray-200 rounded-lg shadow-lg bg-black">
         {/* Header */}
-        <div className="flex justify-between  h-full  items-center ">
+        <div className="flex justify-between h-full items-center">
           <h1 className={cn("text-2xl font-bold shadow-lg text-white")}>Calculator</h1>
         </div>
 
@@ -79,15 +79,15 @@ function CalculatorPage() {
           <p className={cn("font-bold text-6xl text-right text-black")}>{displayValue}</p>
         </div>
         {showHistory && (
-        <div className={cn("mt-4 p-4 border rounded-lg bg-gray-100 max-h-20 overflow-y-auto")}>
-          <h2 className="text-lg font-bold">History</h2>
-          <ul>
-            {history.map((item, index) => (
-              <li key={index} className="text-sm">{item.expression} = {item.result}</li>
-            ))}
-          </ul>
-        </div>
-      )}
+          <div className={cn("mt-4 p-4 border rounded-lg bg-gray-100 max-h-20 overflow-y-auto")}>
+            <h2 className="text-lg font-bold">History</h2>
+            <ul>
+              {history.map((item, index) => (
+                <li key={index} className="text-sm">{item.expression} = {item.result}</li>
+              ))}
+            </ul>
+          </div>
+        )}
         {/* Calculator Buttons */}
         <div className={cn("w-full grid grid-cols-7 sm:grid-cols-7 md:grid-cols-7 lg:grid-cols-7 gap-4 mt-6 p-4 rounded-lg")}>
           <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Cos')}>Cos</Button>
