@@ -33,7 +33,9 @@ const AuthPage = () => {
         } else {
           setIsAuthenticated(true);
           localStorage.setItem('isAuthenticated', 'true');
-          router.push('/calculator'); // Redirect to home page
+
+          // Redirect to the calculator page
+          router.push('/calculator');
         }
       } else {
         setError(data.error || 'An error occurred');
@@ -44,7 +46,7 @@ const AuthPage = () => {
   };
 
   return (
-    <main className={cn("min-h-screen flex items-center justify-center bg-purple-300 bg-cover bg-center ", "bg-[url('/img1.jpg')]" )}>
+    <main className={cn("min-h-screen flex items-center justify-center bg-purple-300 bg-cover bg-center", "bg-[url('/img1.jpg')]")}>
       <div className="block max-w-sm w-full p-8 border border-gray-200 rounded-lg shadow-lg bg-white bg-opacity-90">
         <h1 className="text-2xl font-bold mb-4">{isAuthenticated ? 'Welcome!' : (isRegistering ? 'Register' : 'Login')}</h1>
         {error && <p className="text-red-500">{error}</p>}
@@ -68,7 +70,7 @@ const AuthPage = () => {
                 className="w-full p-2 border border-gray-300 rounded"
               />
             </div>
-            <Button variant="outline" size="lg" className="bg-blue-800 hover:bg-blue-900 text-white w-full mt-4 w-full" onClick={handleAuth}>
+            <Button variant="outline" size="lg" className="bg-blue-800 hover:bg-blue-900 text-white w-full mt-4" onClick={handleAuth}>
               {isRegistering ? 'Register' : 'Login'}
             </Button>
             <Button 

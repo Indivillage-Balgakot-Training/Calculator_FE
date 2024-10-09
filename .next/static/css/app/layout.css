@@ -649,15 +649,6 @@ video {
 .mt-6 {
   margin-top: 1.5rem;
 }
-.mb-5 {
-  margin-bottom: 1.25rem;
-}
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
 .block {
   display: block;
 }
@@ -700,20 +691,8 @@ video {
 .h-full {
   height: 100%;
 }
-.max-h-48 {
-  max-height: 12rem;
-}
-.max-h-10 {
-  max-height: 2.5rem;
-}
-.max-h-5 {
-  max-height: 1.25rem;
-}
 .max-h-20 {
   max-height: 5rem;
-}
-.max-h-40 {
-  max-height: 10rem;
 }
 .min-h-screen {
   min-height: 100vh;
@@ -735,9 +714,6 @@ video {
 }
 .cursor-pointer {
   cursor: pointer;
-}
-.grid-cols-4 {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 .grid-cols-7 {
   grid-template-columns: repeat(7, minmax(0, 1fr));
@@ -762,17 +738,11 @@ video {
   margin-right: calc(1rem * var(--tw-space-x-reverse));
   margin-left: calc(1rem * calc(1 - var(--tw-space-x-reverse)));
 }
-.overflow-auto {
-  overflow: auto;
-}
 .overflow-hidden {
   overflow: hidden;
 }
 .overflow-y-auto {
   overflow-y: auto;
-}
-.overflow-y-scroll {
-  overflow-y: scroll;
 }
 .whitespace-nowrap {
   white-space: nowrap;
@@ -862,20 +832,17 @@ video {
   --tw-bg-opacity: 1;
   background-color: rgb(94 234 212 / var(--tw-bg-opacity));
 }
-.bg-transparent {
-  background-color: transparent;
-}
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
-.bg-zinc-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(161 161 170 / var(--tw-bg-opacity));
-}
 .bg-zinc-300 {
   --tw-bg-opacity: 1;
   background-color: rgb(212 212 216 / var(--tw-bg-opacity));
+}
+.bg-zinc-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(161 161 170 / var(--tw-bg-opacity));
 }
 .bg-opacity-90 {
   --tw-bg-opacity: 0.9;
@@ -911,9 +878,6 @@ video {
 .p-8 {
   padding: 2rem;
 }
-.p-0 {
-  padding: 0px;
-}
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -944,18 +908,6 @@ video {
 }
 .pt-\[60px\] {
   padding-top: 60px;
-}
-.pt-16 {
-  padding-top: 4rem;
-}
-.pt-40 {
-  padding-top: 10rem;
-}
-.pt-20 {
-  padding-top: 5rem;
-}
-.pt-\[70px\] {
-  padding-top: 70px;
 }
 .pt-\[65px\] {
   padding-top: 65px;
@@ -1397,20 +1349,12 @@ video {
 
 @media (min-width: 640px) {
 
-  .sm\:grid-cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-  }
-
   .sm\:grid-cols-7 {
     grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 768px) {
-
-  .md\:grid-cols-6 {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-  }
 
   .md\:grid-cols-7 {
     grid-template-columns: repeat(7, minmax(0, 1fr));
