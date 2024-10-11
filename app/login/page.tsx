@@ -6,14 +6,25 @@ import cn from 'classnames';
 import { Button } from '@/components/ui/button';
 
 const AuthPage = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isRegistering, setIsRegistering] = useState(false);
+  const [username, setUsername] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [isRegistering, setIsRegistering] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const router = useRouter();
 
+  const validatePassword = (password: string): boolean => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+    return passwordRegex.test(password);
+  };
+
   const handleAuth = async () => {
+    if (!validatePassword(password)) {
+      setError('Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.');
+      return;
+    }
+
     try {
       const url = `http://127.0.0.1:5000/api/${isRegistering ? 'register' : 'login'}`;
       const response = await fetch(url, {
@@ -28,13 +39,11 @@ const AuthPage = () => {
 
       if (response.ok) {
         if (isRegistering) {
-          setIsRegistering(false); // Switch back to login
+          setIsRegistering(false);
           setError('Registration successful! Please log in.');
         } else {
           setIsAuthenticated(true);
           localStorage.setItem('isAuthenticated', 'true');
-
-          // Redirect to the calculator page
           router.push('/calculator');
         }
       } else {
@@ -59,16 +68,25 @@ const AuthPage = () => {
                 value={username} 
                 onChange={(e) => setUsername(e.target.value)} 
                 className="w-full p-2 border border-gray-300 rounded"
+                required
               />
             </div>
             <div className="mb-4">
               <label className="block text-sm font-bold mb-2">Password</label>
               <input 
-                type="password" 
+                type={showPassword ? 'text' : 'password'} 
                 value={password} 
                 onChange={(e) => setPassword(e.target.value)} 
                 className="w-full p-2 border border-gray-300 rounded"
+                required
               />
+              <button 
+                type="button" 
+                className="text-blue-600 mt-1"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? 'Hide' : 'Show'} Password
+              </button>
             </div>
             <Button variant="outline" size="lg" className="bg-blue-800 hover:bg-blue-900 text-white w-full mt-4" onClick={handleAuth}>
               {isRegistering ? 'Register' : 'Login'}
