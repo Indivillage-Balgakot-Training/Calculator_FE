@@ -67,7 +67,7 @@ function CalculatorPage() {
   const displayValue = expression || '0';
 
   return (
-    <main className={cn("min-h-screen flex flex-col items-center")}>
+    <main className={cn("min-h-screen flex flex-col items-center bg-[url('/img3.jpg')]")}>
       <div className="block max-w-xl mx-auto mt-10 py-5 px-2 border border-gray-200 rounded-lg shadow-lg bg-black">
         {/* Header */}
         <div className="flex justify-between h-full items-center">
@@ -89,41 +89,41 @@ function CalculatorPage() {
           </div>
         )}
         {/* Calculator Buttons */}
-        <div className={cn("w-full grid grid-cols-7 sm:grid-cols-7 md:grid-cols-7 lg:grid-cols-7 gap-4 mt-6 p-4 rounded-lg")}>
-          <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Cos')}>Cos</Button>
-          <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Sin')}>Sin</Button>
-          <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('Tan')}>Tan</Button>
-          <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('log')}>log</Button>
-          <Button variant='outline' size="lg" className="bg-teal-300 hover:bg-teal-500 text-white" onClick={() => handleClickButton('ln')}>ln</Button>
-          <Button variant='outline' size="lg" className="bg-lime-300 hover:bg-lime-500 text-white" onClick={() => handleClickButton('(')}>(</Button>
-          <Button variant='outline' size="lg" className="bg-lime-400 hover:bg-lime-400 text-white" onClick={() => handleClickButton(')')}>)</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('7')}>7</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('8')}>8</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('9')}>9</Button>
-          <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('%')}>%</Button> 
-          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('e')}>e</Button>
-          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('²')}>x²</Button>
-          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('^3')}>x^3</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('4')}>4</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('5')}>5</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('6')}>6</Button>
-          <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('*')}>*</Button>
-          <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('/')}>/</Button>
-          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('π')}>π</Button>
-          <Button variant='outline' size="lg"  className="hover:bg-gray-500 " onClick={() => handleClickButton('√')}>√</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('1')}>1</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('2')}>2</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('3')}>3</Button>
-          <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('+')}>+</Button>
-          <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('-')}>-</Button>
-          <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('.')}>.</Button>
-          <Button variant='outline' size="lg" className="bg-orange-800 hover:bg-orange-900 text-white" onClick={() => handleClickButton('^')}>^</Button>
-          <Button variant='outline' size="lg" className="bg-zinc-400 hover:bg-zinc-600 text-white" onClick={() => handleClickButton('0')}>0</Button>
-          <Button variant='outline' size="lg" className="bg-indigo-500 hover:bg-indigo-900 top-1 left-1 text-white" onClick={toggleHistory}>
+        <div className={cn("w-full grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-4 mt-6 p-4 rounded-lg")}>
+          <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton('Cos')}>Cos</Button>
+          <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton('Sin')}>Sin</Button>
+          <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton('Tan')}>Tan</Button>
+          <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton('log')}>log</Button>
+          <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton('ln')}>ln</Button>
+          <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton('(')}>(</Button>
+          <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton(')')}>)</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('7')}>7</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('8')}>8</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('9')}>9</Button>
+          <Button variant='outline' size="lg" className="  hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('%')}>%</Button> 
+          <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('e')}>e</Button>
+          <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('²')}>x²</Button>
+          <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('^3')}>x^3</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('4')}>4</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('5')}>5</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('6')}>6</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('*')}>*</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('/')}>/</Button>
+          <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('π')}>π</Button>
+          <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('√')}>√</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('1')}>1</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('2')}>2</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('3')}>3</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('+')}>+</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('-')}>-</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('.')}>.</Button>
+          <Button variant='outline' size="lg" className="hidden sm:block hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('^')}>^</Button>
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('0')}>0</Button>
+          <Button variant='outline' size="lg" className="bg-indigo-400 hover:bg-indigo-900 top-1 left-1 text-white col-span-1" onClick={toggleHistory}>
           📜  </Button>
-          <Button variant='outline' size="lg" className="bg-blue-400 hover:bg-blue-600 text-white" onClick={() => handleClickButton('DEL')}>DEL</Button>
-          <Button variant='outline' size="lg" className="col-span-2 bg-blue-400 hover:bg-blue-600 text-white" onClick={() => handleClickButton('RESET')}>RESET</Button>
-          <Button variant='outline' size="lg" className="col-span-2 bg-purple-400 hover:bg-purple-600 text-white" onClick={() => handleClickButton('=')}>=</Button>
+          <Button variant='outline' size="lg" className="bg-blue-400 hover:bg-blue-600 text-white col-span-1" onClick={() => handleClickButton('DEL')}>DEL</Button>
+          <Button variant='outline' size="lg" className="col-span-1 col-span-2 bg-blue-400 hover:bg-blue-600 text-white " onClick={() => handleClickButton('RESET')}>RESET</Button>
+          <Button variant='outline' size="lg" className="col-span-1 col-span-2 bg-zinc-400 hover:bg-zinc-600 text-white " onClick={() => handleClickButton('=')}>=</Button>
         </div>
       </div>
 </main>

@@ -17,7 +17,7 @@ const LogoutPage = () => {
   }, [router]);
 
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 bg-[url('/img2.jpg')] bg-no-repeat bg-center bg-cover">
+    <main className="flex flex-col items-center justify-center min-h-screen bg-gray-100 bg-[url('/img3.jpg')] bg-no-repeat bg-center bg-cover">
       <h1 className="text-2xl font-bold text-white">You have been logged out.</h1>
       <p className="mt-4 text-white">Redirecting to home page...</p>
     </main>

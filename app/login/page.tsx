@@ -55,7 +55,7 @@ const AuthPage = () => {
   };
 
   return (
-    <main className={cn("min-h-screen flex items-center justify-center bg-purple-300 bg-cover bg-center", "bg-[url('/img1.jpg')]")}>
+    <main className={cn("min-h-screen flex items-center justify-center bg-purple-300 bg-cover bg-center", "bg-[url('/img3.jpg')]")}>
       <div className="block max-w-sm w-full p-8 border border-gray-200 rounded-lg shadow-lg bg-white bg-opacity-90">
         <h1 className="text-2xl font-bold mb-4">{isAuthenticated ? 'Welcome!' : (isRegistering ? 'Register' : 'Login')}</h1>
         {error && <p className="text-red-500">{error}</p>}
@@ -88,13 +88,13 @@ const AuthPage = () => {
                 {showPassword ? 'Hide' : 'Show'} Password
               </button>
             </div>
-            <Button variant="outline" size="lg" className="bg-blue-800 hover:bg-blue-900 text-white w-full mt-4" onClick={handleAuth}>
+            <Button variant="outline" size="lg" className="bg-blue-500 hover:bg-blue-900 text-white w-full mt-4" onClick={handleAuth}>
               {isRegistering ? 'Register' : 'Login'}
             </Button>
             <Button 
               variant="outline" 
               size="lg" 
-              className="bg-blue-800 hover:bg-blue-900 text-white w-full mt-4" 
+              className="bg-blue-500 hover:bg-blue-900 text-white w-full mt-4" 
               onClick={() => setIsRegistering(!isRegistering)}
             >
               {isRegistering ? 'Already have an account? Login' : 'Create an account'}
