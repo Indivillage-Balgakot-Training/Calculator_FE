@@ -14,9 +14,7 @@ const Header: React.FC = () => {
           <li>
             <Link href="/login" className="text-black hover:text-gray-400">Login</Link>
           </li>
-          <li>
-            <Link href="/logout" className="text-black hover:text-gray-400">Logout</Link>
-          </li>
+
         </ul>
       </nav>
     </header>

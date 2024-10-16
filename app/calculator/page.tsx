@@ -4,6 +4,7 @@
 import { useState, useEffect } from "react";
 import cn from "classnames";
 import { useRouter } from 'next/navigation';
+import Link from 'next/link'; // Import Link from next/link
 
 // Components
 import { Button } from "@/components/ui/button";
@@ -36,11 +37,11 @@ function CalculatorPage() {
   }, [router]);
 
   const operateCalculator = async (expr: string): Promise<string> => {
-    const username = localStorage.getItem('username'); // Retrieve username from localStorage
+    const username = localStorage.getItem('username');
     const response = await fetch('http://127.0.0.1:5000/api/calculate', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ expression: expr, username: username }), // Include username
+      body: JSON.stringify({ expression: expr, username: username }),
     });
 
     if (!response.ok) return 'Error';
@@ -72,6 +73,13 @@ function CalculatorPage() {
         {/* Header */}
         <div className="flex justify-between h-full items-center">
           <h1 className={cn("text-2xl font-bold shadow-lg text-white")}>Calculator</h1>
+
+          <Link 
+            href="/logout" 
+            className=" text-2xl bg-black-400 hover:bg-blue-600 text-white "
+          >
+            Logout
+          </Link>
         </div>
 
         {/* Calculator Screen */}
@@ -126,7 +134,7 @@ function CalculatorPage() {
           <Button variant='outline' size="lg" className="col-span-1 col-span-2 bg-zinc-400 hover:bg-zinc-600 text-white " onClick={() => handleClickButton('=')}>=</Button>
         </div>
       </div>
-</main>
+    </main>
   );
 }
 
