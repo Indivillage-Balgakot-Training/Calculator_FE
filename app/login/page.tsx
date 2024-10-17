@@ -20,11 +20,16 @@ const AuthPage = () => {
   };
 
   const handleAuth = async () => {
+    if (!username) {
+      setError('Username is required.');
+      return;
+    }
+    
     if (!validatePassword(password)) {
       setError('Password must be at least 8 characters long and include uppercase, lowercase, number, and special character.');
       return;
     }
-
+  
     try {
       const url = `http://127.0.0.1:5000/api/${isRegistering ? 'register' : 'login'}`;
       const response = await fetch(url, {
@@ -34,9 +39,9 @@ const AuthPage = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
+  
       const data = await response.json();
-
+  
       if (response.ok) {
         if (isRegistering) {
           setIsRegistering(false);
@@ -44,7 +49,8 @@ const AuthPage = () => {
         } else {
           setIsAuthenticated(true);
           localStorage.setItem('isAuthenticated', 'true');
-          router.push('/calculator');
+          localStorage.setItem('username', username); // Store the username
+          router.push('/calculator'); // Redirect to the calculator page
         }
       } else {
         setError(data.error || 'An error occurred');
@@ -53,6 +59,7 @@ const AuthPage = () => {
       setError('Failed to connect to the server.');
     }
   };
+  
 
   return (
     <main className={cn("min-h-screen flex items-center justify-center bg-purple-300 bg-cover bg-center", "bg-[url('/img3.jpg')]")}>
@@ -102,8 +109,7 @@ const AuthPage = () => {
           </>
         ) : (
           <div className="mt-4 text-green-500">
-            <p>Username: {username}</p>
-            <p>Password: {password}</p>
+            <p>Welcome, {username}!</p> {/* Show a welcome message instead of sensitive info */}
           </div>
         )}
       </div>

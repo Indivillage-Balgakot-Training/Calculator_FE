@@ -1,19 +1,17 @@
-'use client'
+'use client';
 
-// Node Modules
 import { useState, useEffect } from "react";
 import cn from "classnames";
 import { useRouter } from 'next/navigation';
-import Link from 'next/link'; // Import Link from next/link
-
-// Components
+import Link from 'next/link';
 import { Button } from "@/components/ui/button";
 
 function CalculatorPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [expression, setExpression] = useState<string>('');
-  const [history, setHistory] = useState<{ expression: string, result: string }[]>([]);
+  const [history, setHistory] = useState<{ username: string, expression: string, result: string }[]>([]);
   const [showHistory, setShowHistory] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -23,32 +21,69 @@ function CalculatorPage() {
     if (authStatus !== 'true') {
       router.push('/login');
     } else {
-      // Load history from localStorage if authenticated
-      const username = localStorage.getItem('username');
+      const username = localStorage.getItem('username') || '';
       const fetchUserHistory = async () => {
-        const response = await fetch(`http://127.0.0.1:5000/api/logs/${username}`);
-        if (response.ok) {
-          const data = await response.json();
-          setHistory(data);
+        try {
+          setLoading(true);
+          const response = await fetch(`http://127.0.0.1:5000/api/logs/${username}`);
+          if (response.ok) {
+            const data = await response.json();
+            // Filter history to only include the current user
+            const userHistory = data.filter((item: { username: string }) => item.username === username);
+            setHistory(userHistory.map((item: { username: string; expression: string; result: string }) => ({
+              username: item.username,
+              expression: item.expression,
+              result: item.result
+            })));
+            // Store in localStorage for persistence
+            localStorage.setItem('userHistory', JSON.stringify(userHistory));
+          } else {
+            console.error('Failed to fetch history');
+          }
+        } catch (error) {
+          console.error('Error fetching history:', error);
+        } finally {
+          setLoading(false);
         }
       };
       fetchUserHistory();
     }
   }, [router]);
 
+  useEffect(() => {
+    // Load history from localStorage on component mount
+    const storedHistory = localStorage.getItem('userHistory');
+    if (storedHistory) {
+      setHistory(JSON.parse(storedHistory));
+    }
+  }, []);
+
   const operateCalculator = async (expr: string): Promise<string> => {
     const username = localStorage.getItem('username');
-    const response = await fetch('http://127.0.0.1:5000/api/calculate', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ expression: expr, username: username }),
-    });
+    try {
+      setLoading(true);
+      const response = await fetch('http://127.0.0.1:5000/api/calculate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ expression: expr, username }),
+      });
 
-    if (!response.ok) return 'Error';
+      if (!response.ok) throw new Error('Error calculating result');
 
-    const data = await response.json();
-    setHistory(prev => [...prev, { expression: expr, result: data.result }]);
-    return data.result.toString();
+      const data = await response.json();
+      const newEntry = { username: username || "Anonymous", expression: expr, result: data.result };
+
+      setHistory(prev => [...prev, newEntry]);
+      // Update localStorage with new history
+      localStorage.setItem('userHistory', JSON.stringify([...history, newEntry]));
+      
+      return data.result.toString();
+    } catch (error) {
+      console.error('Calculation error:', error);
+      return 'Error';
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleClickButton = async (value: string) => {
@@ -70,32 +105,31 @@ function CalculatorPage() {
   return (
     <main className={cn("min-h-screen flex flex-col items-center bg-[url('/img3.jpg')]")}>
       <div className="block max-w-xl mx-auto mt-10 py-5 px-2 border border-gray-200 rounded-lg shadow-lg bg-black">
-        {/* Header */}
         <div className="flex justify-between h-full items-center">
           <h1 className={cn("text-2xl font-bold shadow-lg text-white")}>Calculator</h1>
-
           <Link 
             href="/logout" 
-            className=" text-2xl bg-black-400 hover:bg-blue-600 text-white "
+            className="text-2xl bg-black-400 hover:bg-blue-600 text-white"
           >
             Logout
           </Link>
         </div>
 
-        {/* Calculator Screen */}
         <div className={cn("h-32 w-full mt-6 p-8 border rounded-lg bg-white overflow-hidden")}>
           <p className={cn("font-bold text-6xl text-right text-black")}>{displayValue}</p>
         </div>
+        
         {showHistory && (
-          <div className={cn("mt-4 p-4 border rounded-lg bg-gray-100 max-h-20 overflow-y-auto")}>
+          <div className={cn("mt-4 p-4 border rounded-lg bg-gray-100 max-h-40 overflow-y-auto")}>
             <h2 className="text-lg font-bold">History</h2>
             <ul>
               {history.map((item, index) => (
-                <li key={index} className="text-sm">{item.expression} = {item.result}</li>
+                <li key={index} className="text-sm">{item.username}: {item.expression} = {item.result}</li>
               ))}
             </ul>
+            <Button variant='outline' size="sm" onClick={() => setHistory([])}>Clear History</Button>
           </div>
-        )}
+        )} 
         {/* Calculator Buttons */}
         <div className={cn("w-full grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-7 gap-4 mt-6 p-4 rounded-lg")}>
           <Button variant='outline' size="lg" className="hidden sm:block bg-zinc-400 hover:bg-zinc-600 text-white col-span-1" onClick={() => handleClickButton('Cos')}>Cos</Button>
