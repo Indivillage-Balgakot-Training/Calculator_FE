@@ -102,6 +102,39 @@ function CalculatorPage() {
   const toggleHistory = () => setShowHistory(prev => !prev);
   const displayValue = expression || '0';
 
+
+  // Keyboard input handling
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      const key = event.key;
+      if (key === 'Enter') {
+        handleClickButton('=');
+      } else if (key === 'Backspace') {
+        handleClickButton('DEL');
+      } else if (key === 'Escape') {
+        handleClickButton('RESET');
+      } else if (key === 's') {
+        handleClickButton('Sin');
+      } else if (key === 'c') {
+        handleClickButton('Cos');
+      }  else if (key === 't') {
+        handleClickButton('Tan');
+      } else if (key === 'p') {
+        handleClickButton('π');
+      } else  if (key === 'l') {
+        handleClickButton('log');
+      }  else if (!isNaN(Number(key)) || ['+', '-', '*', '/', '.', '(', ')','%'].includes(key)) {
+        handleClickButton(key);
+      }
+    };
+
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [expression]);
+
   return (
     <main className={cn("min-h-screen flex flex-col items-center bg-[url('/img3.jpg')]")}>
       <div className="block max-w-xl mx-auto mt-10 py-5 px-2 border border-gray-200 rounded-lg shadow-lg bg-black">
