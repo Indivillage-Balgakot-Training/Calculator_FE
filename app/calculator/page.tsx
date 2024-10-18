@@ -175,7 +175,7 @@ function CalculatorPage() {
           <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('7')}>7</Button>
           <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('8')}>8</Button>
           <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('9')}>9</Button>
-          <Button variant='outline' size="lg" className="  hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('%')}>%</Button> 
+          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('/')}>/</Button>
           <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('e')}>e</Button>
           <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('²')}>x²</Button>
           <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('^3')}>x^3</Button>
@@ -183,7 +183,7 @@ function CalculatorPage() {
           <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('5')}>5</Button>
           <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('6')}>6</Button>
           <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('*')}>*</Button>
-          <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('/')}>/</Button>
+          <Button variant='outline' size="lg" className="  hidden sm:block hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('%')}>%</Button>
           <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('π')}>π</Button>
           <Button variant='outline' size="lg"  className="hidden sm:block hover:bg-gray-500 col-span-1" onClick={() => handleClickButton('√')}>√</Button>
           <Button variant='outline' size="lg" className=" hover:bg-zinc-600 col-span-1" onClick={() => handleClickButton('1')}>1</Button>
